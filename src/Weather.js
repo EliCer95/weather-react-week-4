@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Weather() {
@@ -88,7 +88,7 @@ export default function Weather() {
       </div>
       <p>
         <a
-          href="https://github.com/EliCer95/Weather-app-React"
+          href="https://github.com/EliCer95/weather-react-week-4"
           rel="noopener noreferrer"
           target="_blank"
         >
