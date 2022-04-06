@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react"
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Weather() {
