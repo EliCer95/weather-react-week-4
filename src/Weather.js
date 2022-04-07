@@ -12,6 +12,7 @@ export default function Weather() {
                 type="search"
                 className="form-control"
                 placeholder="Enter a city"
+                autoFocus="on"
               />
             </div>
             <div className="col-4">
@@ -31,11 +32,11 @@ export default function Weather() {
         </div>
         <div className="row">
           <div className="col-6 weather-info">
-            Temperature: 16°C
-            <br />
-            Humidity: 12%
-            <br />
-            Wind: 3km/h
+            <ul>
+              <li>Temperature: 16 °C|°F</li>
+              <li>Humidity: 12%</li>
+              <li>Wind: 3km/h</li>
+            </ul>
           </div>
           <div className="col-6">
             <ReactAnimatedWeather

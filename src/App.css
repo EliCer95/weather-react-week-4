@@ -1,12 +1,12 @@
 .App {
+  max-width: 500px;
   text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 .frame {
   border: none;
-  max-width: 500px;
   padding: 20px 30px;
-  display: block;
-  margin: 0 auto;
   margin-top: 30px;
   background: rgb(102, 35, 116);
   border-radius: 10px;
