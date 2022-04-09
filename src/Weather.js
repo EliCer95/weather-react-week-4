@@ -106,7 +106,6 @@ export default function Weather() {
       </div>
     );
   } else {
-    let city = "Luxembourg";
     const apiKey = `5af297a6d7993b7bb3c2ec51eeeaccd4`;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
