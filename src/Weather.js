@@ -107,8 +107,8 @@ export default function Weather() {
     );
   } else {
     let city = "Luxembourg";
-    const apiKey = `8391fa6e8cccf5df58f5bc72e1083d51`;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
+    const apiKey = `5af297a6d7993b7bb3c2ec51eeeaccd4`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
 
     console.log(url);
