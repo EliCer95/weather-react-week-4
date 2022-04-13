@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 import axios from "axios";
+import FormattedDate from "./FormattedDate.js"
 
-export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       city: response.data.name,
+      date: new Date(response.data.dt * 1000),
     });
-    setReady(true);
   }
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="App">
         <div className="container frame">
@@ -42,64 +44,66 @@ export default function Weather() {
             <div className="col-6">
               <h1>{weatherData.city}</h1>
             </div>
-            <div className="col-6"> </div>
-          </div>
-          <div className="row">
-            <div className="col-6 weather-info">
-              <ul>
-                <li>
-                  Temperature: {Math.round(weatherData.temperature)} °C|°F
-                </li>
-                <li>Humidity: {Math.round(weatherData.humidity)}%</li>
-                <li>Wind: {Math.round(weatherData.wind)}km/h</li>
-              </ul>
-            </div>
             <div className="col-6">
-              <ReactAnimatedWeather
-                icon="WIND"
-                color="goldenrod"
-                size="100"
-                animate="true"
-              />
+              <FormattedDate date={weatherData.date} />
             </div>
-          </div>
-          <div className="row forecast">
-            <div className="col-3">
-              Thrusday
-              <br />
-              <ReactAnimatedWeather
-                icon="CLEAR_DAY"
-                color="goldenrod"
-                size="40"
-                animate="true"
-              />
+            <div className="row">
+              <div className="col-6 weather-info">
+                <ul>
+                  <li>
+                    Temperature: {Math.round(weatherData.temperature)} °C|°F
+                  </li>
+                  <li>Humidity: {Math.round(weatherData.humidity)}%</li>
+                  <li>Wind: {Math.round(weatherData.wind)}km/h</li>
+                </ul>
+              </div>
+              <div className="col-6">
+                <ReactAnimatedWeather
+                  icon="WIND"
+                  color="goldenrod"
+                  size={100}
+                  animate={true}
+                />
+              </div>
             </div>
-            <div className="col-3">
-              Friday <br />
-              <ReactAnimatedWeather
-                icon="SNOW"
-                color="goldenrod"
-                size="40"
-                animate="true"
-              />
-            </div>
-            <div className="col-3">
-              Saturday <br />
-              <ReactAnimatedWeather
-                icon="SLEET"
-                color="goldenrod"
-                size="40"
-                animate="true"
-              />
-            </div>
-            <div className="col-3">
-              Sunday <br />
-              <ReactAnimatedWeather
-                icon="CLOUDY"
-                color="goldenrod"
-                size="40"
-                animate="true"
-              />
+            <div className="row forecast">
+              <div className="col-3">
+                Thrusday
+                <br />
+                <ReactAnimatedWeather
+                  icon="CLEAR_DAY"
+                  color="goldenrod"
+                  size={40}
+                  animate={true}
+                />
+              </div>
+              <div className="col-3">
+                Friday <br />
+                <ReactAnimatedWeather
+                  icon="SNOW"
+                  color="goldenrod"
+                  size={40}
+                  animate={true}
+                />
+              </div>
+              <div className="col-3">
+                Saturday <br />
+                <ReactAnimatedWeather
+                  icon="SLEET"
+                  color="goldenrod"
+                  size={40}
+                  animate={true}
+                />
+              </div>
+              <div className="col-3">
+                Sunday <br />
+                <ReactAnimatedWeather
+                  icon="CLOUDY"
+                  color="goldenrod"
+                  size={40}
+                  animate={true}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -107,10 +111,9 @@ export default function Weather() {
     );
   } else {
     const apiKey = `5af297a6d7993b7bb3c2ec51eeeaccd4`;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
-    axios.get(url).then(handleResponse);
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
 
-    console.log(url);
+    axios.get(url).then(handleResponse);
 
     return "Loading...";
   }
