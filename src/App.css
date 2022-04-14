@@ -47,3 +47,7 @@ a {
 p {
   text-align: center;
 }
+
+li {
+  list-style: none;
+}
