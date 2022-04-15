@@ -1,6 +1,7 @@
 import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 import FormattedDate from "./FormattedDate.js";
+import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherInfo(props) {
   return (
@@ -15,20 +16,13 @@ export default function WeatherInfo(props) {
         <div className="row">
           <div className="col-6 weather-info">
             <ul>
-              <li>
-                Temperature: {Math.round(props.data.temperature)} °C|°F
-              </li>
+              <li>Temperature: {Math.round(props.data.temperature)} °C|°F</li>
               <li>Humidity: {Math.round(props.data.humidity)}%</li>
               <li>Wind: {Math.round(props.data.wind)}km/h</li>
             </ul>
           </div>
           <div className="col-6">
-            <ReactAnimatedWeather
-              icon="WIND"
-              color="goldenrod"
-              size={100}
-              animate={true}
-            />
+            <WeatherIcon code={props.data.icon} alt={props.data.description} />
           </div>
         </div>
         <div className="row forecast">
