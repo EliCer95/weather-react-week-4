@@ -1,7 +1,7 @@
 import React from "react";
-import ReactAnimatedWeather from "react-animated-weather";
 import FormattedDate from "./FormattedDate.js";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature.js";
 
 export default function WeatherInfo(props) {
   return (
@@ -16,7 +16,9 @@ export default function WeatherInfo(props) {
         <div className="row">
           <div className="col-6 weather-info">
             <ul>
-              <li>Temperature: {Math.round(props.data.temperature)} °C|°F</li>
+              <li>
+                <WeatherTemperature celsius={props.data.temperature} />
+              </li>
               <li>Humidity: {Math.round(props.data.humidity)}%</li>
               <li>Wind: {Math.round(props.data.wind)}km/h</li>
             </ul>
@@ -29,39 +31,19 @@ export default function WeatherInfo(props) {
           <div className="col-3">
             Thrusday
             <br />
-            <ReactAnimatedWeather
-              icon="CLEAR_DAY"
-              color="goldenrod"
-              size={40}
-              animate={true}
-            />
+            <WeatherIcon code={props.data.icon} alt={props.data.description} />
           </div>
           <div className="col-3">
             Friday <br />
-            <ReactAnimatedWeather
-              icon="SNOW"
-              color="goldenrod"
-              size={40}
-              animate={true}
-            />
+            <WeatherIcon code={props.data.icon} alt={props.data.description} />
           </div>
           <div className="col-3">
             Saturday <br />
-            <ReactAnimatedWeather
-              icon="SLEET"
-              color="goldenrod"
-              size={40}
-              animate={true}
-            />
+            <WeatherIcon code={props.data.icon} alt={props.data.description} />
           </div>
           <div className="col-3">
             Sunday <br />
-            <ReactAnimatedWeather
-              icon="CLOUDY"
-              color="goldenrod"
-              size={40}
-              animate={true}
-            />
+            <WeatherIcon code={props.data.icon} alt={props.data.description} />
           </div>
         </div>
       </div>
