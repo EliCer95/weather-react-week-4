@@ -2,6 +2,7 @@ import React from "react";
 import FormattedDate from "./FormattedDate.js";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature.js";
+import WeatherForecast from "./WeatherForecast.js";
 
 export default function WeatherInfo(props) {
   return (
@@ -24,28 +25,14 @@ export default function WeatherInfo(props) {
             </ul>
           </div>
           <div className="col-6 main-icon">
-            <WeatherIcon code={props.data.icon} alt={props.data.description} />
+            <WeatherIcon
+              code={props.data.icon}
+              alt={props.data.description}
+              size={100}
+            />
           </div>
         </div>
-        <div className="row forecast">
-          <div className="col-3">
-            Thrusday
-            <br />
-            <WeatherIcon code={props.data.icon} alt={props.data.description} />
-          </div>
-          <div className="col-3">
-            Friday <br />
-            <WeatherIcon code={props.data.icon} alt={props.data.description} />
-          </div>
-          <div className="col-3">
-            Saturday <br />
-            <WeatherIcon code={props.data.icon} alt={props.data.description} />
-          </div>
-          <div className="col-3">
-            Sunday <br />
-            <WeatherIcon code={props.data.icon} alt={props.data.description} />
-          </div>
-        </div>
+        <WeatherForecast />
       </div>
     </div>
   );
