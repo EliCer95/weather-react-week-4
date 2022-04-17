@@ -1,6 +1,5 @@
 .App {
   max-width: 500px;
-  text-align: center;
   display: block;
   margin: 0 auto;
 }
@@ -19,8 +18,8 @@
 }
 
 .weather-info {
-  text-align: left;
   padding-bottom: 25px;
+  padding-left: 0px;
   color: rgba(240, 234, 234, 0.507);
 }
 
@@ -38,6 +37,7 @@ h1 {
 
 .forecast {
   color: rgba(255, 255, 255, 0.815);
+  text-align: center;
 }
 
 a {
@@ -48,6 +48,17 @@ p {
   text-align: center;
 }
 
+ul,
 li {
   list-style: none;
+  padding-left: -10px;
+  margin-left: -16px;
+}
+
+.formattedDate {
+  text-align: right;
+}
+
+.main-icon {
+  text-align: right;
 }
