@@ -62,3 +62,7 @@ li {
 .main-icon {
   text-align: right;
 }
+
+.temp-min {
+  color: rgba(0, 0, 0, 0.548);
+}
