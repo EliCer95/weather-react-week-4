@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo.js";
 import WeatherForecast from "./WeatherForecast.js";
+import CurrentLocation from "./CurrentLocation";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -25,19 +26,6 @@ export default function Weather(props) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     axios.get(url).then(handleResponse);
-  }
-
-  function showPosition(response) {
-    console.log(response);
-  }
-
-  function getCurrentLocation(reponse) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  }
-
-  function showCurrent(event) {
-    event.preventDefault();
-    getCurrentLocation();
   }
 
   function handleSubmit(event) {
@@ -72,12 +60,8 @@ export default function Weather(props) {
                 />
               </div>
               <div className="col-3">
-                <input
-                  type="button"
-                  onClick={showCurrent}
-                  value="Current"
-                  className="btn btn-outline-warning w-100 search-button"
-                />
+                <CurrentLocation />
+               
               </div>
             </div>
           </form>
