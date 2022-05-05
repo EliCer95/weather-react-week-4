@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 export default function CurrentLocation() {
-  function showCurrent() {
-    return "Hello";
+  const [currentData, setCurrentData] = useState({ ready: false });
+
+  function saveLocation(geo) {
+    console.log(geo);
   }
+  function setCurrent(response) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      saveLocation([[position.coords.latitude, position.coords.longitude]]);
+    });
+  }
+
+  function showCurrent(event) {
+    event.preventDefault();
+    setCurrent();
+  }
+
   return (
     <input
       type="button"
