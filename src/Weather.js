@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo.js";
 import WeatherForecast from "./WeatherForecast.js";
-import CurrentLocation from "./CurrentLocation";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -52,16 +51,12 @@ export default function Weather(props) {
                   onChange={handleCityChange}
                 />
               </div>
-              <div className="col-3">
+              <div className="col-6">
                 <input
                   type="submit"
                   value="Search"
                   className="btn btn-outline-warning w-100 search-button"
                 />
-              </div>
-              <div className="col-3">
-                <CurrentLocation />
-               
               </div>
             </div>
           </form>
